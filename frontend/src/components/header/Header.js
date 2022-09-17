@@ -59,7 +59,7 @@ interface HeaderProps {
     links: { link: string; label: string }[];
 }
 
-export function HeaderH( {links}) {
+export function HeaderH( {links}) : HeaderProps {
     const [opened, { toggle }] = useDisclosure(false);
     const [active, setActive] = useState(links[0].link);
     const { classes, cx } = useStyles();

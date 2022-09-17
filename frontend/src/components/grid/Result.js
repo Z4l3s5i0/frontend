@@ -1,15 +1,37 @@
-import React, {Component} from "react";
+import React, {Component, createElement} from "react";
 import styled from "styled-components";
 import infoicon from "../../pictures/infoicon.png"
 import velasIcon from "../../pictures/velasIcon.png"
+import Searchbar2 from "../header/Searchbar2.0";
 
 export default class Result extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            verified: false
+            verified: false,
+            results: {
+                metadata: {
+                    name: '',
+                    description: '',
+                    attributes: [
+                        {value: ' '},
+                        {value: ' '},
+                        {value: ' '},
+                        {value: ' '},
+                        {value: ' '},
+                        {value: ' '}
+                    ]
+                },
+                valid: false,
+                owner: ' ',
+                issuer: ' ',
+            },
+            loaded: false,
+            returnValue: createElement({'div': "div"})
+
         }
-        this.isVerified = this.isVerified().bind;
+
+        this.isVerified = this.isVerified.bind(this);
     }
 
     isVerified() {
@@ -17,88 +39,93 @@ export default class Result extends Component {
             this.setState({verified: true});
         }
     }
+    componentDidMount() {
+        if (this.props.results.toString() !== undefined){
+            this.setState({loaded: true})
+        }}
 
     render() {
-        return (
-            <NFTDATARootRoot>
-                <ValidStatus>
-                    <Text1>Status of validation</Text1>
-                    <Text2>{this.state.verified}</Text2>
-                    <InfoOutline
-                        src={infoicon}
-                    />
-                </ValidStatus>
-                <Data>
-                    <FlexRow>
-                        <BasicDataOfNFT>
-                            <Text3>{this.props.results.metadata.name}</Text3>
-                            <Paragraph>
-                                {this.props.results.metadata.description}
-                            </Paragraph>
-                        </BasicDataOfNFT>
-                        <Price1>
-                            <Text4>Price</Text4>
-                            <NFTPrice>
-                                <VelasIcon
-                                    src={velasIcon}
-                                />
-                                <Text5>1.3458</Text5>
-                            </NFTPrice>
-                        </Price1>
-                    </FlexRow>
-                    <FlexRow1>
-                        <Collection>
-                            <Attribute>Owner</Attribute>
-                            <CollectionData>
-                                <Avatar>
-                                    <Image1
-                                        src={`https://file.rendit.io/n/WMTBpoQL6S5j7TQnEbIc.png`}
+            return (
+                <NFTDATARootRoot>
+                    <ValidStatus>
+                        <Text1>Status of validation</Text1>
+                        <Text2>{this.state.verified}</Text2>
+                        <InfoOutline
+                            src={infoicon}
+                        />
+                    </ValidStatus>
+                    <Data>
+                        <FlexRow>
+                            <BasicDataOfNFT>
+                                <Text3>{this.state.results.metadata.name}</Text3>
+                                <Paragraph>
+                                    {this.state.results.metadata.description}
+                                </Paragraph>
+                            </BasicDataOfNFT>
+                            <Price1>
+                                <Text4>Price</Text4>
+                                <NFTPrice>
+                                    <VelasIcon
+                                        src={velasIcon}
                                     />
-                                </Avatar>
-                                <FlexRow2>
-                                    <Attribute1>{this.props.results.owner}</Attribute1>
-                                </FlexRow2>
-                            </CollectionData>
-                        </Collection>
-                        <Collection>
-                            <Attribute>Collection</Attribute>
-                            <CollectionData>
-                                <Avatar>
-                                    <Image1
-                                        src={`https://file.rendit.io/n/UdzjQ42RXmgX89e1jT3I.png`}
-                                    />
-                                </Avatar>
-                                <FlexRow3>
-                                    <Attribute3>{this.props.results.issuer}</Attribute3>
-                                    <Verified
-                                        src={`https://file.rendit.io/n/ApWjnSfil2gPSVprxGpD.svg`}
-                                    />
-                                </FlexRow3>
-                            </CollectionData>
-                        </Collection>
-                    </FlexRow1>
-                </Data>
-                <AttributesSection>
-                    <Text6>Attributes</Text6>
-                    <AttributesRows>
-                        <RowOfInfo>
-                            <Attribute4>Background</Attribute4>
-                            <Erty>{this.props.results.metadata.attributes[0].value}</Erty>
-                        </RowOfInfo>
-                        <RowOfInfo>
-                            <Attribute5>Headset</Attribute5>
-                            <Erty1>{this.props.results.metadata.attributes[5].value}</Erty1>
-                        </RowOfInfo>
-                        <RowOfInfo>
-                            <Attribute5>Beard</Attribute5>
-                            <Erty1>{this.props.results.metadata.attributes[2].value}</Erty1>
-                        </RowOfInfo>
-                    </AttributesRows>
-                </AttributesSection>
-            </NFTDATARootRoot>
-        );
+                                    <Text5>1.3458</Text5>
+                                </NFTPrice>
+                            </Price1>
+                        </FlexRow>
+                        <FlexRow1>
+                            <Collection>
+                                <Attribute>Owner</Attribute>
+                                <CollectionData>
+                                    <Avatar>
+                                        <Image1
+                                            src={`https://file.rendit.io/n/WMTBpoQL6S5j7TQnEbIc.png`}
+                                        />
+                                    </Avatar>
+                                    <FlexRow2>
+                                        <Attribute1>{this.state.results.owner}</Attribute1>
+                                    </FlexRow2>
+                                </CollectionData>
+                            </Collection>
+                            <Collection>
+                                <Attribute>Collection</Attribute>
+                                <CollectionData>
+                                    <Avatar>
+                                        <Image1
+                                            src={`https://file.rendit.io/n/UdzjQ42RXmgX89e1jT3I.png`}
+                                        />
+                                    </Avatar>
+                                    <FlexRow3>
+                                        <Attribute3>{this.state.results.issuer}</Attribute3>
+                                        <Verified
+                                            src={`https://file.rendit.io/n/ApWjnSfil2gPSVprxGpD.svg`}
+                                        />
+                                    </FlexRow3>
+                                </CollectionData>
+                            </Collection>
+                        </FlexRow1>
+                    </Data>
+                    <AttributesSection>
+                        <Text6>Attributes</Text6>
+                        <AttributesRows>
+                            <RowOfInfo>
+                                <Attribute4>Background</Attribute4>
+                                <Erty>{this.state.results.metadata.attributes[0].value}</Erty>
+                            </RowOfInfo>
+                            <RowOfInfo>
+                                <Attribute5>Headset</Attribute5>
+                                <Erty1>{this.state.results.metadata.attributes[5].value}</Erty1>
+                            </RowOfInfo>
+                            <RowOfInfo>
+                                <Attribute5>Beard</Attribute5>
+                                <Erty1>{this.state.results.metadata.attributes[2].value}</Erty1>
+                            </RowOfInfo>
+                        </AttributesRows>
+                    </AttributesSection>
+                </NFTDATARootRoot>
+            );
+        }
     };
-}
+
     const Collection = styled.div`
   width: 236px;
   gap: 8px;
