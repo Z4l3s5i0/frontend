@@ -3,26 +3,25 @@ import "./searchbar.css"
 import styled from "styled-components";
 import {TextInput} from "@mantine/core";
 
-function Searchbar(){
+function Searchbar(props){
     const [error, setError] = useState(null);
     const [loaded, setLoaded] = useState(false);
-    const [items, setItems] = useState([]);
-    const [query, setQuery] = useState("");
+    const [results, setResults] = useState([]);
+    const [query, setQuery] = useState();
 
     useEffect(() =>{
-    fetch("...", {
-        method: 'GET',
-        headers: {"Content-Type": "application/json"},
-        body: {
-            query
-        }
+    fetch("https://backend-velasiraptor-gvom4czscq-oa.a.run.app/search", {
+        method: 'POST',
+        headers: {"Content-Type": "text/plain"},
+        body: query
     }).then((res) => res.json())
         .then((result) => {
             if (result.err !== undefined){
                 setError(error);
                 setLoaded(true);
             }else {
-                setItems(result);
+                setResults(result);
+                this.props.setResult(result);
                 setLoaded(true);
             }});
 
@@ -30,21 +29,22 @@ function Searchbar(){
 
     if (error){
         return <>{error.message }< />;
-    }else {
+    }else if (!loaded){
+        return <>{"loading..."}</>
+    } else{
 
         return (
                 <div>
                     <label htmlFor={'search-form'}>
                         <input
-                            type={"search"}
+                            inputMode={"text"}
                             name={"search-form"}
                             id={"search-form"}
                             className={"searchbar"}
                             placeholder={`Search for NFT...`}
-                            onChange={(e) => setQuery(e.target.value)}/>
+                            onChange={e => setQuery(e.target.value.toString())}
+                        />
                     </label>
-                    {//<SearchIcon className={"searchbarImage"} src={`https://file.rendit.io/n/RD2APZZ6cdWUWiiCnINM.svg`} />
-                    }
                 </div>
         );
     }
