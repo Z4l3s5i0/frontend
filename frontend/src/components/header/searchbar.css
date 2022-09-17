@@ -28,14 +28,6 @@
     border-width: 1px;
 }
 .searchbarImage {
-    gap: 10px;
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: flex-start;
-    background-color: #7f77e0;
-    border-radius: 50px;
-    padding: 9px;
     width: 12px;
     height: 12px;
 }

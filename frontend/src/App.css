@@ -23,7 +23,21 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
+.logof {
+  size: 0.25px;
+}
+.algingin{
+  align-self: center;
+}
+.background {
+  position: static;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
 
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(20px);
+}
 .App-link {
   color: #61dafb;
 }
