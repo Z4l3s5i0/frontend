@@ -9,10 +9,12 @@ class Searchbar2 extends Component{
         this.state={
             error: null,
             results: [],
-            query: ''
+            query: '',
+            beforeQuery: ''
         }
         this.updateQuery = this.updateQuery.bind(this);
         this.updateResults = this.updateResults.bind(this);
+        this.updateMiddle = this.updateMiddle.bind(this);
     }
 componentDidUpdate(prevProps: Readonly<P>, prevState: Readonly<S>, snapshot: SS) {
         if (prevState.query !== this.state.query){
@@ -38,10 +40,12 @@ updateResults(){
         this.props.setResult(this.state.results);
         //navigateTo Results
 }
-updateQuery(queryInfo){
-        this.setState({query: queryInfo})
+updateQuery(){
+        this.setState({query: this.state.beforeQuery});
 }
-
+updateMiddle(queryInfo){
+        this.setState({beforeQuery: queryInfo});
+}
 render() {
     return (
                 <label htmlFor={'search-form'}>
@@ -52,7 +56,15 @@ render() {
                         id={"search-form"}
                         className={"searchbar"}
                         placeholder={`Search for NFT...`}
-                    onChange={e => this.updateQuery(e.target.value.toString())}
+                        onChange={e=> {
+                            this.updateMiddle(e.target.value.toString())
+                        }}
+                        onKeyDown={e => {
+                            if (e.key.toString().toLowerCase() === 'enter') {
+                            this.updateQuery();
+                        }
+                    }
+                    }
                     />
                     </div>
                 </label>
