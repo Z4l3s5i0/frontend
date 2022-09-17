@@ -21,7 +21,7 @@ export default function App() {
                         }
                         <Container className={"container"}> <Searchbar2 setResult={setResult}/>
                         </Container>
-                        {result !== -1 &&
+                        {result.metadata !== undefined &&
                             <Result setResult={result}/>
                         }
                     </BrowserRouter>

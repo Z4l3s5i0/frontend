@@ -57,7 +57,7 @@ render() {
                         className={"searchbar"}
                         placeholder={`Search for NFT...`}
                         onChange={e=> {
-                            this.updateMiddle(e.target.value.toString())
+                            this.updateMiddle(e.target.value.toString());
                         }}
                         onKeyDown={e => {
                             if (e.key.toString().toLowerCase() === 'enter') {
