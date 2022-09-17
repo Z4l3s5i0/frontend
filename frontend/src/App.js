@@ -10,7 +10,7 @@ function App() {
     const linksForRoute = ['/documentation', '/Contact']
   return (
     <div className="App algingin">
-        <HeaderH links={[{link: '/documentation', label: 'Documentation'}, {link: '/contact', label: 'contact'}]}/>
+        <HeaderH links={[{link: '/search', label: 'search'}, {link: '/documentation', label: 'Documentation'}, {link: '/contact', label: 'contact'}]}/>
         <Searchbar/>
     </div>
   );
