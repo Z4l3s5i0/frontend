@@ -1,10 +1,17 @@
-
+.alignInput{
+    text-align: center;
+    align-items: center;
+    align-self: center;
+    align-content: center;
+    alignment: center;
+    margin-left: auto;
+}
 .searchbar{
+    min-width: 80%;
+    min-height: 50%;
     gap: 16px;
     display: flex;
-    flex-direction: row;
     justify-content: flex-start;
-    align-items: center;
     border-style: solid;
     border-color: #ebebed;
     background-color: #ffffff;
@@ -46,7 +53,7 @@
     border-width: 1px;
 }
 .text{
-    width: 240px;
+    width: 80%;
     display: inline-block;
     flex-grow: 1;
     padding: 0px;

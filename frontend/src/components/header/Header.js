@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { createStyles, Header, Group, ActionIcon, Container, Burger } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
-import backgroundPic from "../../pictures/backgroundPic.jpg";
+import logoChar from "../../pictures/logoChar.png";
 import '../../App.css';
 
 const useStyles = createStyles((theme) => ({
@@ -80,19 +80,18 @@ export function HeaderH( {links}) : HeaderProps {
 
     return (
         <div className={"algingin"}>
-        <Header height={56} mb={120}>
+        <Header height={56} mb={0}>
             <Container className={classes.inner}>
                 <Burger opened={opened} onClick={toggle} size="sm" className={classes.burger} />
                 <Group className={classes.links} spacing={5}>
                     {items}
                 </Group>
-
-                {//<img src={logo512} className={"logof"} />
-                }
+                <div className={"logof"}>
+                <img src={logoChar}  />
+                </div>
             </Container>
         </Header>
-            {//<img className={'background'} src={backgroundPic}/>
-            }
+
 </div>
 );
 }

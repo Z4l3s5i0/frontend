@@ -2,7 +2,6 @@ import React, {Component, createElement} from "react";
 import styled from "styled-components";
 import infoicon from "../../pictures/infoicon.png"
 import velasIcon from "../../pictures/velasIcon.png"
-import Searchbar2 from "../header/Searchbar2.0";
 
 export default class Result extends Component {
     constructor(props) {
@@ -58,9 +57,9 @@ export default class Result extends Component {
                     <Data>
                         <FlexRow>
                             <BasicDataOfNFT>
-                                <Text3>{this.state.result.metadata.name}</Text3>
+                                <Text3>{this.state.result.metadata.name || undefined}</Text3>
                                 <Paragraph>
-                                    {this.state.result.metadata.description}
+                                    {this.state.result.metadata.description || undefined}
                                 </Paragraph>
                             </BasicDataOfNFT>
                             <Price1>
@@ -83,7 +82,7 @@ export default class Result extends Component {
                                         />
                                     </Avatar>
                                     <FlexRow2>
-                                        <Attribute1>{this.state.result.owner}</Attribute1>
+                                        <Attribute1>{this.state.result.owner || undefined}</Attribute1>
                                     </FlexRow2>
                                 </CollectionData>
                             </Collection>
@@ -96,7 +95,7 @@ export default class Result extends Component {
                                         />
                                     </Avatar>
                                     <FlexRow3>
-                                        <Attribute3>{this.state.result.issuer}</Attribute3>
+                                        <Attribute3>{this.state.result.issuer || undefined}</Attribute3>
                                         <Verified
                                             src={`https://file.rendit.io/n/ApWjnSfil2gPSVprxGpD.svg`}
                                         />
@@ -110,15 +109,15 @@ export default class Result extends Component {
                         <AttributesRows>
                             <RowOfInfo>
                                 <Attribute4>Background</Attribute4>
-                                <Erty>{this.state.result.metadata.attributes[0].value}</Erty>
+                                <Erty>{this.state.result.metadata.attributes[0].value || undefined}</Erty>
                             </RowOfInfo>
                             <RowOfInfo>
                                 <Attribute5>Headset</Attribute5>
-                                <Erty1>{this.state.result.metadata.attributes[5].value}</Erty1>
+                                <Erty1>{this.state.result.metadata.attributes[5].value || undefined}</Erty1>
                             </RowOfInfo>
                             <RowOfInfo>
                                 <Attribute5>Beard</Attribute5>
-                                <Erty1>{this.state.result.metadata.attributes[2].value}</Erty1>
+                                <Erty1>{this.state.result.metadata.attributes[2].value || undefined}</Erty1>
                             </RowOfInfo>
                         </AttributesRows>
                     </AttributesSection>

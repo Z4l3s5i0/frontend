@@ -44,8 +44,8 @@ updateQuery(queryInfo){
 
 render() {
     return (
-            <div>
                 <label htmlFor={'search-form'}>
+                    <div className={"alignInput"}>
                     <input
                         inputMode={"text"}
                         name={"search-form"}
@@ -54,8 +54,8 @@ render() {
                         placeholder={`Search for NFT...`}
                     onChange={e => this.updateQuery(e.target.value.toString())}
                     />
+                    </div>
                 </label>
-            </div>
         );
     }
 };
