@@ -9,10 +9,10 @@ export default class Result extends Component {
         super(props);
         this.state = {
             verified: false,
-            results: {
+            result: {
                 metadata: {
-                    name: '',
-                    description: '',
+                    name: 'Velasiraptor',
+                    description: 'Nft Authy',
                     attributes: [
                         {value: ' '},
                         {value: ' '},
@@ -26,7 +26,6 @@ export default class Result extends Component {
                 owner: ' ',
                 issuer: ' ',
             },
-            loaded: false,
             returnValue: createElement({'div': "div"})
 
         }
@@ -35,14 +34,16 @@ export default class Result extends Component {
     }
 
     isVerified() {
-        if (this.props.results.valid) {
+        if (this.props.result.valid) {
             this.setState({verified: true});
         }
     }
-    componentDidMount() {
-        if (this.props.results.toString() !== undefined){
-            this.setState({loaded: true})
-        }}
+    componentDidUpdate(prevProps: Readonly<P>, prevState: Readonly<S>, snapshot: SS)
+        {
+            if (this.props.result !== prevProps.result) {
+                this.setState({result: this.props.result})
+            }
+        }
 
     render() {
             return (
@@ -57,9 +58,9 @@ export default class Result extends Component {
                     <Data>
                         <FlexRow>
                             <BasicDataOfNFT>
-                                <Text3>{this.state.results.metadata.name}</Text3>
+                                <Text3>{this.state.result.metadata.name}</Text3>
                                 <Paragraph>
-                                    {this.state.results.metadata.description}
+                                    {this.state.result.metadata.description}
                                 </Paragraph>
                             </BasicDataOfNFT>
                             <Price1>
@@ -82,7 +83,7 @@ export default class Result extends Component {
                                         />
                                     </Avatar>
                                     <FlexRow2>
-                                        <Attribute1>{this.state.results.owner}</Attribute1>
+                                        <Attribute1>{this.state.result.owner}</Attribute1>
                                     </FlexRow2>
                                 </CollectionData>
                             </Collection>
@@ -95,7 +96,7 @@ export default class Result extends Component {
                                         />
                                     </Avatar>
                                     <FlexRow3>
-                                        <Attribute3>{this.state.results.issuer}</Attribute3>
+                                        <Attribute3>{this.state.result.issuer}</Attribute3>
                                         <Verified
                                             src={`https://file.rendit.io/n/ApWjnSfil2gPSVprxGpD.svg`}
                                         />
@@ -109,15 +110,15 @@ export default class Result extends Component {
                         <AttributesRows>
                             <RowOfInfo>
                                 <Attribute4>Background</Attribute4>
-                                <Erty>{this.state.results.metadata.attributes[0].value}</Erty>
+                                <Erty>{this.state.result.metadata.attributes[0].value}</Erty>
                             </RowOfInfo>
                             <RowOfInfo>
                                 <Attribute5>Headset</Attribute5>
-                                <Erty1>{this.state.results.metadata.attributes[5].value}</Erty1>
+                                <Erty1>{this.state.result.metadata.attributes[5].value}</Erty1>
                             </RowOfInfo>
                             <RowOfInfo>
                                 <Attribute5>Beard</Attribute5>
-                                <Erty1>{this.state.results.metadata.attributes[2].value}</Erty1>
+                                <Erty1>{this.state.result.metadata.attributes[2].value}</Erty1>
                             </RowOfInfo>
                         </AttributesRows>
                     </AttributesSection>

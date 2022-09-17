@@ -2,7 +2,6 @@ import React, {Component, useEffect, useState} from "react";
 import "./searchbar.css"
 import styled from "styled-components";
 import {TextInput} from "@mantine/core";
-import {Link, useLocation} from "react-router-dom";
 
 class Searchbar2 extends Component{
     constructor(props){

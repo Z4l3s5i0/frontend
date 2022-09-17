@@ -4,26 +4,20 @@ import {HeaderH} from "./components/header/Header";
 import {useState} from "react";
 import Result from "./components/grid/Result";
 import Searchbar2 from "./components/header/Searchbar2.0";
-import {BrowserRouter, Route, Router, useLocation} from "react-router-dom";
+import {BrowserRouter} from "react-router-dom";
 
 
 export default function App() {
-    const [result, setResult] = useState();
-    let resultIsSet= false;
-    if (result !== '') {
-        resultIsSet = true;
-    }
-    else {
-        resultIsSet = false;
-    }
+    const [result, setResult] = useState(-1);
+
         return (
 
                 <div className="App algingin">
-
-                    <HeaderH links={[{link: '/', label: 'search'}, {link: '/contact', label: 'contact'}]}/>
+                    <BrowserRouter  basename="/build">
+                        <HeaderH links={[{link: '/', label: 'search'}, {link: '/contact', label: 'contact'}]}/>
                         <Searchbar2 setResult={setResult}/>
-                        <Result results={setResult}/>
-
+                        <Result setResult={result}/>
+                    </BrowserRouter>
             </div>
 
         );
