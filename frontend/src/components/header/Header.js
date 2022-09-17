@@ -80,7 +80,7 @@ export function HeaderH( {links}) {
 
     return (
         <div className={"algingin"}>
-        <Header height={56} mb={120}>
+        <Header height={56} mb={0}>
             <Container className={classes.inner}>
                 <Burger opened={opened} onClick={toggle} size="sm" className={classes.burger} />
                 <Group className={classes.links} spacing={5}>
@@ -91,8 +91,6 @@ export function HeaderH( {links}) {
                 }
             </Container>
         </Header>
-            {//<img className={'background'} src={backgroundPic}/>
-            }
 </div>
 );
 }

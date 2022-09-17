@@ -10,7 +10,8 @@ function App() {
     const linksForRoute = ['/documentation', '/Contact']
   return (
     <div className="App algingin">
-        <HeaderH links={[{link: '/search', label: 'search'}, {link: '/documentation', label: 'Documentation'}, {link: '/contact', label: 'contact'}]}/>
+        <HeaderH links={[{link: '/search', label: 'search'}, {link: '/contact', label: 'contact'}]}/>
+        <img className={'background'} src={backgroundPic}/>
         <Searchbar/>
     </div>
   );

@@ -1,7 +1,7 @@
 import React, {Component, useEffect, useState} from "react";
 import "./searchbar.css"
 import styled from "styled-components";
-import {TextInput} from "@mantine/core";
+import {Textarea, TextInput} from "@mantine/core";
 
 function Searchbar(){
     const [error, setError] = useState(null);
@@ -34,6 +34,7 @@ function Searchbar(){
 
         return (
                 <div>
+                    <p className={"SearchText"}>{"VALIDATE THE NFT"}</p>
                     <label htmlFor={'search-form'}>
                         <input
                             type={"search"}

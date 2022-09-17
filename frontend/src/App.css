@@ -30,7 +30,8 @@
   align-self: center;
 }
 .background {
-  position: static;
+  position: absolute;
+  background-attachment: fixed;
   left: 0px;
   right: 0px;
   bottom: 0px;
