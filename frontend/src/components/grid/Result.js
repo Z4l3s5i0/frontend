@@ -61,8 +61,9 @@ export default class Result extends Component {
 
     render() {
             return (
-                <div className ={"flex.row d-flex p-2"}>
+                <div className ={"smaller flex.row d-flex p-2"}>
                 <img src={this.state.result.metadata.image} className={"nft"}/>
+                    <div className={"block"}>
                 <NFTDATARootRoot>
                     <ValidStatus className={this.state.verified ? "verified" : "scam"}>
                         <Text1>Status of validation</Text1>
@@ -126,6 +127,7 @@ export default class Result extends Component {
                         </AttributesRows>
                     </AttributesSection>
                 </NFTDATARootRoot>
+                    </div>
                 </div>
             );
         }
@@ -340,7 +342,8 @@ export default class Result extends Component {
   align-items: center;
 `;
     const Attribute3 = styled.div`
-  color: #444445;
+      width: 240px;
+      color: #444445;
   font-size: 16px;
   font-weight: 500;
   font-family: Inter;

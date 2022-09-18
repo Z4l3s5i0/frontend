@@ -37,9 +37,47 @@
 }
 .block{
 
-  block-size: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 20px;
+
+  position: absolute;
+  margin-right: -25px;
+  height: 708px;
+  left: 750px;
+  right: 64px;
+  top: 512px;
+}
+
+.titelOfNFT{
+  position: absolute;
+  height: 48px;
+  left: 64px;
+  right: 64px;
+  top: 420px;
+
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 48px;
+
+  color: #444445;
+}
+.smaller{
+  width: 75%;
+  height: 75%;
 }
 .nft{
+  margin-left: -25px;
+  position: absolute;
+  width: 646px;
+  height: 646px;
+  left: 64px;
+  top: 512px;
+  border-radius: 16px;
   size: 0.5px
 }
 .container{
@@ -52,12 +90,9 @@
   alignItems: 'flex-start';
 }
 .background {
-  position: static;
-  backgroundSize: 'cover';
-  backgroundPosition: 'center';
-  backgroundAttachment: "fixed";
-  background: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(20px);
+
+  position: absolute;
+  top: 0px;
 }
 
 @keyframes App-logo-spin {

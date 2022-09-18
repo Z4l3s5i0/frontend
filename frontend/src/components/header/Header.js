@@ -88,8 +88,6 @@ export function HeaderH( {links}) : HeaderProps {
                 </Group>
                 <div className={"logof"}>
                 <img src={logoChar}  />
-                    {// <h1>Velasiraptor</h1>
-                    }
                 </div>
             </Container>
         </Header>

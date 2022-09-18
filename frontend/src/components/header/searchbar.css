@@ -6,12 +6,9 @@
     alignment: center;
     margin-left: auto;
 }
-.higher{
-    min-height: 75%;
-}
+
 .searchbar{
     min-width: 80%;
-    min-height: 50%;
     gap: 16px;
     display: flex;
     justify-content: flex-start;
@@ -21,8 +18,25 @@
     border-radius: 40px;
     padding: 15px 23px 15px 31px;
     border-width: 1px;
+    flex-direction: row;
+    align-items: center;
+    margin: auto;
 }
+.Root{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 20px;
 
+    position: absolute;
+    height: 708px;
+    left: 820px;
+    right: 64px;
+    top: 512px;
+
+
+}
 .searchbar:hover{
     gap: 16px;
     display: flex;
