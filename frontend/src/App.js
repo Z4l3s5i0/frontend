@@ -22,7 +22,7 @@ export default function App() {
                         <Container className={"container"}> <Searchbar2 setResult={setResult}/>
                         </Container>
                         {result.metadata !== undefined &&
-                            <Result setResult={result}/>
+                            <Result result={result}/>
                         }
                     </BrowserRouter>
             </div>

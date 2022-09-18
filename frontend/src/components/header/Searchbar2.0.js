@@ -15,6 +15,7 @@ class Searchbar2 extends Component{
         this.updateQuery = this.updateQuery.bind(this);
         this.updateResults = this.updateResults.bind(this);
         this.updateMiddle = this.updateMiddle.bind(this);
+        this.hasResults = this.hasResults.bind(this);
     }
 componentDidUpdate(prevProps: Readonly<P>, prevState: Readonly<S>, snapshot: SS) {
         if (prevState.query !== this.state.query){
@@ -46,6 +47,11 @@ updateQuery(){
 updateMiddle(queryInfo){
         this.setState({beforeQuery: queryInfo});
 }
+    hasResults(){
+        if(this.state.results !== undefined){
+               return true;
+        }
+    }
 render() {
     return (
                 <label htmlFor={'search-form'}>
@@ -54,7 +60,7 @@ render() {
                         inputMode={"text"}
                         name={"search-form"}
                         id={"search-form"}
-                        className={"searchbar"}
+                        className={this.hasResults() ? "higher searchbar" : "searchbar"}
                         placeholder={`Search for NFT...`}
                         onChange={e=> {
                             this.updateMiddle(e.target.value.toString());

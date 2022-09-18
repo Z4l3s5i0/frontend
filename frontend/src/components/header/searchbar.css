@@ -6,6 +6,9 @@
     alignment: center;
     margin-left: auto;
 }
+.higher{
+    min-height: 75%;
+}
 .searchbar{
     min-width: 80%;
     min-height: 50%;

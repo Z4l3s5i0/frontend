@@ -13,13 +13,34 @@
     animation: App-logo-spin infinite 20s linear;
   }
 }
-
+.scam{
+  background-color: #ffe7e7;
+  border-color: #a82525;
+}
+.verified{
+  background-color: #E7FAF5;
+  border-color: #21725E;
+}
+.textScam{
+  color: #a82525;
+}
+.textVerified{
+  color: #21725E;
+}
 .logof {
   padding-right: 50%;
   size: 0.25px;
+  display: inline-block;
 }
 .algingin{
   align-self: center;
+}
+.block{
+
+  block-size: auto;
+}
+.nft{
+  size: 0.5px
 }
 .container{
   margin-top: 150px;

@@ -1,6 +1,7 @@
 import React, {Component, createElement} from "react";
 import styled from "styled-components";
-import infoicon from "../../pictures/infoicon.png"
+import infoiconGreen from "../../pictures/infoiconGreen.png"
+import infoiconRed from "../../pictures/infoiconRed.png"
 import velasIcon from "../../pictures/velasIcon.png"
 
 export default class Result extends Component {
@@ -24,12 +25,11 @@ export default class Result extends Component {
                 valid: false,
                 owner: ' ',
                 issuer: ' ',
-            },
-            returnValue: createElement({'div': "div"})
-
+            }
         }
 
         this.isVerified = this.isVerified.bind(this);
+        this.getFirstFew = this.getFirstFew.bind(this);
     }
 
     isVerified() {
@@ -37,21 +37,38 @@ export default class Result extends Component {
             this.setState({verified: true});
         }
     }
+    getFirstFew(hexadecimal){
+        let firstfew = '';
+        let lastfew = '';
+        if (hexadecimal !== undefined){
+            firstfew = hexadecimal.substring(0, 4);
+            lastfew = hexadecimal.substring(hexadecimal.length -4, hexadecimal.length);
+            return firstfew + '...' + lastfew;
+        }
+    }
+    componentDidMount() {
+        this.isVerified();
+        this.setState({result: this.props.result})
+    }
+
     componentDidUpdate(prevProps: Readonly<P>, prevState: Readonly<S>, snapshot: SS)
         {
             if (this.props.result !== prevProps.result) {
+                this.isVerified();
                 this.setState({result: this.props.result})
             }
         }
 
     render() {
             return (
+                <div className ={"flex.row d-flex p-2"}>
+                <img src={this.state.result.metadata.image} className={"nft"}/>
                 <NFTDATARootRoot>
-                    <ValidStatus>
+                    <ValidStatus className={this.state.verified ? "verified" : "scam"}>
                         <Text1>Status of validation</Text1>
-                        <Text2>{this.state.verified}</Text2>
+                        <Text2 className={this.state.verified ? "textVerified" : "textScam"}>{this.state.verified ? "Verified" : "Scam"}</Text2>
                         <InfoOutline
-                            src={infoicon}
+                            src={this.state.verified ? infoiconGreen : infoiconRed}
                         />
                     </ValidStatus>
                     <Data>
@@ -76,29 +93,16 @@ export default class Result extends Component {
                             <Collection>
                                 <Attribute>Owner</Attribute>
                                 <CollectionData>
-                                    <Avatar>
-                                        <Image1
-                                            src={`https://file.rendit.io/n/WMTBpoQL6S5j7TQnEbIc.png`}
-                                        />
-                                    </Avatar>
                                     <FlexRow2>
-                                        <Attribute1>{this.state.result.owner || undefined}</Attribute1>
+                                        <Attribute1>{this.getFirstFew(this.state.result.owner || undefined)}</Attribute1>
                                     </FlexRow2>
                                 </CollectionData>
                             </Collection>
                             <Collection>
                                 <Attribute>Collection</Attribute>
                                 <CollectionData>
-                                    <Avatar>
-                                        <Image1
-                                            src={`https://file.rendit.io/n/UdzjQ42RXmgX89e1jT3I.png`}
-                                        />
-                                    </Avatar>
                                     <FlexRow3>
-                                        <Attribute3>{this.state.result.issuer || undefined}</Attribute3>
-                                        <Verified
-                                            src={`https://file.rendit.io/n/ApWjnSfil2gPSVprxGpD.svg`}
-                                        />
+                                        <Attribute3>{this.getFirstFew(this.state.result.issuer || undefined)}</Attribute3>
                                     </FlexRow3>
                                 </CollectionData>
                             </Collection>
@@ -109,11 +113,11 @@ export default class Result extends Component {
                         <AttributesRows>
                             <RowOfInfo>
                                 <Attribute4>Background</Attribute4>
-                                <Erty>{this.state.result.metadata.attributes[0].value || undefined}</Erty>
+                                <Erty1>{this.state.result.metadata.attributes[0].value || undefined}</Erty1>
                             </RowOfInfo>
                             <RowOfInfo>
                                 <Attribute5>Headset</Attribute5>
-                                <Erty1>{this.state.result.metadata.attributes[5].value || undefined}</Erty1>
+                                <Erty1>{this.state.result.metadata.attributes[4].value || undefined}</Erty1>
                             </RowOfInfo>
                             <RowOfInfo>
                                 <Attribute5>Beard</Attribute5>
@@ -122,6 +126,7 @@ export default class Result extends Component {
                         </AttributesRows>
                     </AttributesSection>
                 </NFTDATARootRoot>
+                </div>
             );
         }
     };
@@ -149,17 +154,6 @@ export default class Result extends Component {
   justify-content: flex-start;
   align-self: stretch;
   align-items: center;
-`;
-    const Avatar = styled.div`
-  gap: 10px;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: flex-start;
-`;
-    const Image1 = styled.img`
-  width: 108px;
-  height: 108px;
 `;
     const RowOfInfo = styled.div`
   gap: 99px;
@@ -201,9 +195,7 @@ export default class Result extends Component {
   justify-content: flex-start;
   align-self: stretch;
   align-items: flex-start;
-  border-style: solid;
-  border-color: #a82525;
-  background-color: #ffe7e7;
+  border-style: solid;;
   overflow: hidden;
   border-radius: 16px;
   padding: 31px;
@@ -217,7 +209,6 @@ export default class Result extends Component {
   white-space: nowrap;
 `;
     const Text2 = styled.div`
-  color: #a82525;
   font-size: 56px;
   font-weight: 700;
   font-family: Inter;
